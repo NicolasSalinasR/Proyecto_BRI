@@ -14,6 +14,7 @@ Verifica en la consola:
 ```bash
 node -v
 npm -v
+```
 
 ## Instalación y ejecución
 
@@ -21,11 +22,14 @@ npm -v
 ```bash
 git clone <URL_DEL_REPOSITORIO>
 cd frontend
+```
 
 ### Instala las dependencias del proyecto
 ```bash
 npm install
+```
 
 ### Ejecutar servidor
 ```bash
 npm run dev
+```
