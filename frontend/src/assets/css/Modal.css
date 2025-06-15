@@ -1,0 +1,54 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1050;
+}
+
+.modal-dialog {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Alineaciones */
+.modal-left {
+    left: 5%;
+}
+
+.modal-right {
+    right: 5%;
+}
+
+.modal-center {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-title {
+    width: 100%;
+    text-align: center;
+}
+
+
+.modal-header .btn-close {
+    position: absolute;
+    right: 1rem;
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.form-check {
+    margin-bottom: 4px;
+}
+
+.form-check-input {
+    width: 1.2em;
+    height: 1.2em;
+}
