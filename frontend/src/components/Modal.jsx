@@ -1,3 +1,5 @@
+import '../assets/css/Modal.css'
+
 function Modal({ title, content, onClose, position = 'center' }) {
     const positionClass =
         position === 'left' ? 'modal-left' :
@@ -5,40 +7,36 @@ function Modal({ title, content, onClose, position = 'center' }) {
                 'modal-center'; // default
 
     return (
-        <div className="modal fade show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-            <div className={`modal-dialog modal-lg ${positionClass}`} role="document">
-            <div className="modal-content">
-                    <div className="modal-header position-relative">
-                        <h5 className="modal-title">{title}</h5>
-                        <button type="button" className="btn-close" aria-label="Close" onClick={onClose}></button>
-                    </div>
-                    <div className="modal-body" style={{ maxHeight: '400px', overflowY: 'auto' }}>
-                        {content && content.length > 0 ? (
-                            <div className="d-flex flex-column gap-2">
-                                {content.map((item, index) => (
-                                    <div className="form-check d-flex align-items-center" key={index}>
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            id={`check-${index}`}
-                                            style={{ transform: 'scale(1.2)' }}
-                                        />
-                                        <label className="form-check-label ms-2" htmlFor={`check-${index}`}>
-                                            {item}
-                                        </label>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className="text-muted">No hay contenido disponible.</p>
-                        )}
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-                    </div>
+
+        <div className={`modal-overlay`}>
+            <div className={`modal-container ${positionClass}`} onClick={e => e.stopPropagation()}>
+                <div className="modal-header">
+                    <h2 className="modal-title">{title}</h2>
+                    <button className="modal-close" onClick={onClose}>×</button>
+                </div>
+
+                <div className="modal-filter">
+                    <input type="text" placeholder="Buscar ingredientes..." disabled />
+                </div>
+
+                <div className="modal-content">
+                    <ul className="checkbox-list">
+                        {content.map((item, index) => (
+                            <li key={index}>
+                                <label className="checkbox-item">
+                                    <input type="checkbox" />
+                                    <span>{item}</span>
+                                </label>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </div>
+
+
+
+
     );
 }
 

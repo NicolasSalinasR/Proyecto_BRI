@@ -21,3 +21,7 @@
 .sector-overlay:hover {
     fill: rgba(166, 166, 166, 0);
 }
+
+.sector-overlay.active {
+    fill: rgba(166, 166, 166, 0); /* Puedes cambiar a 'none' o un color personalizado */
+}
