@@ -16,11 +16,11 @@
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    overflow-y: auto;
     pointer-events: all;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
+    overflow: hidden; /* importante para evitar que el scroll se desborde */
 }
 
 .modal-left {
@@ -79,18 +79,21 @@
     font-size: 1rem;
 }
 
-.modal-content {
-    flex-grow: 1;
+/* NUEVO: contenedor con scroll limitado */
+.modal-scrollable-content {
+    flex: 1;
     overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 16px;
     scrollbar-width: thin;
     scrollbar-color: rgba(204, 204, 204, 0.45) #f0f0f0;
 }
 
-.modal-content::-webkit-scrollbar {
+.modal-scrollable-content::-webkit-scrollbar {
     width: 8px;
 }
 
-.modal-content::-webkit-scrollbar-thumb {
+.modal-scrollable-content::-webkit-scrollbar-thumb {
     background-color: #007BFF;
     border-radius: 4px;
 }
@@ -135,8 +138,31 @@
     transform: translate(-50%, -50%);
 }
 
-
 .checkbox-item span {
     font-size: 1.1rem;
     color: #333;
+}
+
+/* NUEVO: footer fijo con botón */
+.modal-footer {
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+}
+
+.select-button {
+    margin: 10px auto;
+    width: 50%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.select-button:hover {
+    background-color: #45a049;
 }
