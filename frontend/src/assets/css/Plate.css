@@ -1,3 +1,6 @@
+
+
+/*Estilo del plato y las secciones*/
 .svg-plate-container {
     width: 600px;
     height: 600px;
@@ -24,4 +27,23 @@
 
 .sector-overlay.active {
     fill: rgba(166, 166, 166, 0); /* Puedes cambiar a 'none' o un color personalizado */
+}
+
+
+
+
+/*Estilo del botón buscar receta*/
+.receta-button {
+    background-color: #ccc;
+    color: black;
+    margin: 0 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.receta-button:hover {
+    background-color: #bbb;
 }

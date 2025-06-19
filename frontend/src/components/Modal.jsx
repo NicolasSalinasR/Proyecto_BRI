@@ -1,10 +1,55 @@
 import '../assets/css/Modal.css';
+import { useState, useEffect } from 'react';
+import Fuse from 'fuse.js';
 
-function Modal({ title, content, onClose, position = 'center' }) {
+
+/*
+* Componente que muestra el modal de ingredientes por elegir
+* */
+function Modal({ title, content, onClose, onSelect, position = 'center' }) {
+
+    /* Para indicar la posición del modal*/
     const positionClass =
         position === 'left' ? 'modal-left' :
             position === 'right' ? 'modal-right' :
                 'modal-center';
+
+    /* Para poder realizar la búsqueda de ingredientes con fuse*/
+    const [busqueda, setBusqueda] = useState('');
+    const [selecciones, setSelecciones] = useState([]);
+
+    const fuse = new Fuse(selecciones, {
+        keys: ['nombre'],
+        threshold: 0.4, // Ajusta la sensibilidad (0 = exacto, 1 = muy permisivo)
+    });
+
+    /*Se obtienen los ingredientes filtrados*/
+    const resultadosFiltrados = busqueda
+        ? fuse.search(busqueda).map(result => result.item)
+        : selecciones;
+
+    /*Inicializa los ingredientes seleccionados como vacio*/
+    useEffect(() => {
+        setSelecciones(content.map(item => ({ nombre: item, seleccionado: false })));
+    }, [content]);
+
+    /*Para seleccionar ingredientes*/
+    const toggleSeleccion = (nombre) => {
+        setSelecciones(prev =>
+            prev.map(item =>
+                item.nombre === nombre ? { ...item, seleccionado: !item.seleccionado } : item
+            )
+        );
+    };
+
+    /*Para confirmar la selección de ingredientes*/
+    const confirmarSeleccion = () => {
+        const seleccionados = selecciones
+            .filter(item => item.seleccionado)
+            .map(item => item.nombre);
+        onSelect(seleccionados);
+        onClose();
+    };
 
     return (
         <div className="modal-overlay">
@@ -14,25 +59,37 @@ function Modal({ title, content, onClose, position = 'center' }) {
                     <button className="modal-close" onClick={onClose}>×</button>
                 </div>
 
+                {/*Este es el elemento que realiza la búsqueda de ingredientes*/}
                 <div className="modal-filter">
-                    <input type="text" placeholder="Buscar ingredientes..." disabled />
+                    <input
+                        type="text"
+                        placeholder="Buscar ingredientes..."
+                        value={busqueda}
+                        onChange={(e) => setBusqueda(e.target.value)}
+                    />
                 </div>
 
+                {/*Se muestra el contenido de ingredientes como check-boxs*/}
                 <div className="modal-scrollable-content">
                     <ul className="checkbox-list">
-                        {content.map((item, index) => (
+                        {resultadosFiltrados.map((item, index) => (
                             <li key={index}>
                                 <label className="checkbox-item">
-                                    <input type="checkbox" />
-                                    <span>{item}</span>
+                                    <input
+                                        type="checkbox"
+                                        checked={item.seleccionado}
+                                        onChange={() => toggleSeleccion(item.nombre)}
+                                    />
+                                    <span>{item.nombre}</span>
                                 </label>
                             </li>
                         ))}
                     </ul>
+
                 </div>
 
                 <div className="modal-footer">
-                    <button className="select-button">Seleccionar</button>
+                    <button className="select-button" onClick={confirmarSeleccion}>Seleccionar</button>
                 </div>
             </div>
         </div>

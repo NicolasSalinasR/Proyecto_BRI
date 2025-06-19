@@ -2,23 +2,18 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Filter from './components/Filter.jsx'
-import Plate from "./components/Plate.jsx";
+
+import Search from "./components/Pages/SearchWeb.jsx";
+import Home from "./components/Pages/Home.jsx";
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} />
 
-  return (
-    <>
-        <h1>Plataforma de Recetas</h1>
-        <Filter />
-
-        <Plate>
-
-        </Plate>
-
-        <button>Buscar</button>
-
-    </>
+        </Routes>
   )
 }
 

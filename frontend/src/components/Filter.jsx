@@ -1,5 +1,8 @@
 import '../assets/css/Filter.css'
 
+/*
+* Componente para realizar la búsqueda de recetas por texto, por ahora solo está el estilo
+* */
 function Filter(){
     return <form className="d-flex mb-3" role="search">
         <input

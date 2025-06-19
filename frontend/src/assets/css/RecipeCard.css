@@ -1,0 +1,102 @@
+.recipe-card {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.placeholder-image {
+    background-color: #ccc;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 16px;
+    font-style: italic;
+}
+
+
+.recipe-content {
+    padding: 15px;
+    text-align: center;
+}
+
+.recipe-title {
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+.recipe-time {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.difficulty {
+    background-color: #eee;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: default;
+    margin-bottom: 10px;
+}
+
+.stars {
+    color: #f5a623;
+    font-size: 18px;
+    text-align: center;
+}
+
+.recipe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.recipe-card:hover .recipe-overlay {
+    opacity: 1;
+}
+
+.ver-receta {
+    background-color: #ff7043;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 40px;
+}
+
+.tiempo {
+    font-size: 14px;
+    color: #333;
+}

@@ -75,9 +75,11 @@
     border: 1px solid #ccc;
     border-radius: 6px;
     background-color: #f5f5f5;
-    color: #999;
+    color: #212529;
     font-size: 1rem;
 }
+
+
 
 /* NUEVO: contenedor con scroll limitado */
 .modal-scrollable-content {
