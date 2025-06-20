@@ -12,9 +12,8 @@ function Plate() {
     const getOppositePositionClass = (position) => {
         if (position === 'left') return 'ingredientes-right';
         if (position === 'right') return 'ingredientes-left';
-        return 'ingredientes-left';
+        return 'ingredientes-left'; // por defecto aparece a la izquierda
     };
-
 
     const navigate = useNavigate(); // navegar
 
@@ -33,11 +32,11 @@ function Plate() {
 
     /*Para traer las recetas por ingredientes, por ahora es estatico*/
     const buscarRecetaIngrediente = () => {
-        /*Aquí se puede colocar lógica para buscar las recetas*/
+        /*Aquí se puede colocar lógica para buscar las recetas con la herramienta de elastic*/
 
 
         /* Dirección a la página de busqueda con otros filtros*/
-        navigate('/search', { state: recetasEjemplo});
+        navigate('/search', { state: recetasEjemplo}); // se cambia el vector de recetasEjemplo por el vector de resultados
     };
 
 
