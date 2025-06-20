@@ -1,5 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import ResultInfo from "../ResultInfo.jsx";
+import "../../assets/css/ResultPage.css";
 
 function ResultPage(){
 
@@ -9,9 +10,10 @@ function ResultPage(){
         navigate('/');
     };
 
+
     return (
         <>
-            <h1 onClick={Home}>Plataforma de Recetas</h1>
+            <h1 className="header-title" onClick={Home}>Plataforma de Recetas</h1>
             <ResultInfo />
         </>
     )

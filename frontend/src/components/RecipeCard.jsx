@@ -1,12 +1,21 @@
 import React from 'react';
 import '../assets/css/RecipeCard.css';
+import {useNavigate} from "react-router-dom";
 
 /*
 * Componente para mostrar las tarjetas de recetas
 * */
 const RecipeCard = ({ receta }) => {
     if (!receta) return 'No se ve la receta';
-    console.log("Receta recibida en /search:", receta);
+    //console.log("Receta recibida en /search:", receta);
+
+    const navigate = useNavigate();
+
+    // enviar la receta elegida
+    const RecetaInfo = () => {
+        navigate('/result', { state: receta})
+    }
+
     return (
         <div className="recipe-card">
             {receta.imagen_url ? (
@@ -27,7 +36,7 @@ const RecipeCard = ({ receta }) => {
                 <p><strong>Cocina:</strong> {receta.tipoCocina || '—'}</p>
                 <p><strong>Dieta:</strong> {receta.dieta || '—'}</p>
                 <p><strong>Plato:</strong> {receta.tipoPlato || '—'}</p>
-                <button className="ver-receta">VER RECETA</button>
+                <button className="ver-receta" onClick={RecetaInfo}>VER RECETA</button>
             </div>
             <div className="recipe-content"> {/*Cara principal de la receta*/}
                 <h3 className="recipe-title">{receta.titulo}</h3>
